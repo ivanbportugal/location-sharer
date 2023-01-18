@@ -1,0 +1,29 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+hr {
+  width: 100%;
+  margin: 1rem 0 2rem;
+}
+
+button.chakra-button:focus {
+  box-shadow: none;
+}
+
+a, .chakra-button, .chakra-avatar, .chakra-popover__popper, .chakra-popover__content {
+  -webkit-tap-highlight-color: transparent;
+}
