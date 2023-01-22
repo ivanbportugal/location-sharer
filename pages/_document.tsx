@@ -1,6 +1,8 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 import { CssBaseline } from '@nextui-org/react';
-import { prefix } from '../lib/prefix.js';
+// import { prefix } from '../lib/prefix.js';
+
+const prefix = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
 function MyDocument() {
   const favicon = `${prefix}/favicon.ico`;

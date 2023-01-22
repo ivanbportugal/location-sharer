@@ -7,7 +7,7 @@ import { Switch, useTheme } from '@nextui-org/react';
 export default function Home({ data = {} }) {
 
   const { setTheme } = useNextTheme();
-  const { isDark, type } = useTheme();
+  const { isDark } = useTheme();
 
   return (
     <div className={styles.container}>
@@ -60,7 +60,7 @@ export default function Home({ data = {} }) {
         </div>
 
         <hr />
-        {/* <Positioner /> */}
+        <Positioner />
         
       </main>
 

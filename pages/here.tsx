@@ -1,7 +1,5 @@
 import Head from 'next/head';
 import styles from '../styles/Here.module.css';
-// import SearchComponent from '../components/searchcomponent';
-// import { getChapters } from '../lib/get-json';
 
 export default function Search({ data = {}}) {
 
