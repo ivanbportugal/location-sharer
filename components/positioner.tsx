@@ -1,4 +1,3 @@
-'use client'
 import { Button } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { addLocation, clear, getAllLocations } from "../lib/local-data"

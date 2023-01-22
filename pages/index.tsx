@@ -1,9 +1,13 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import { useTheme as useNextTheme } from 'next-themes'
 import { Positioner } from '../components/positioner';
+import { Switch, useTheme } from '@nextui-org/react';
 
 export default function Home({ data = {} }) {
 
+  const { setTheme } = useNextTheme();
+  const { isDark, type } = useTheme();
 
   return (
     <div className={styles.container}>
@@ -16,6 +20,11 @@ export default function Home({ data = {} }) {
         <h1 className={styles.title}>
           Fry Me?! No, FIND me.
         </h1>
+
+        <Switch
+          checked={isDark}
+          onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
+        />
 
         <div className={styles.description}>
           <div className={styles.card}>
@@ -51,7 +60,7 @@ export default function Home({ data = {} }) {
         </div>
 
         <hr />
-        <Positioner />
+        {/* <Positioner /> */}
         
       </main>
 
