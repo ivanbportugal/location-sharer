@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { useTheme as useNextTheme } from 'next-themes'
 import { Positioner } from '../components/positioner';
-import { Switch, useTheme } from '@nextui-org/react';
+import { Navbar, Switch, Text, User, useTheme } from '@nextui-org/react';
 
 export default function Home({ data = {} }) {
 
@@ -16,15 +16,35 @@ export default function Home({ data = {} }) {
         <meta name="description" content="Share your location to a friend" />
       </Head>
 
+      <Navbar isBordered variant={'floating'}>
+        <Navbar.Content>
+        </Navbar.Content>
+        <Navbar.Content>
+          <Switch
+            checked={isDark}
+            onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
+          />
+          <User
+            // src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+            name="You"
+            // color="primary"
+            bordered
+          />
+        </Navbar.Content>
+      </Navbar>
       <main className={styles.main}>
-        <h1 className={styles.title}>
+        <Text
+          h1
+          size={60}
+          css={{
+            textGradient: "45deg, $blue600 -20%, $red600 50%",
+          }}
+          weight="bold"
+        >
           Fry Me?! No, FIND me.
-        </h1>
+        </Text>
 
-        <Switch
-          checked={isDark}
-          onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
-        />
+        
 
         <div className={styles.description}>
           <div className={styles.card}>
@@ -42,6 +62,10 @@ export default function Home({ data = {} }) {
                 <p style={{textDecoration: 'underline'}}>Step 3</p>
                 <p>Your friend uses the link to find you.</p>
               </li>
+            </ul>
+
+            <p style={{fontWeight: 'bold'}}>FAQ</p>
+            <ul className={styles.stylelinks}>
               <li>
                 <p style={{textDecoration: 'underline'}}>Do you want money for your work?</p>
                 <p>No, but you can always <a target='_blank' rel="noreferrer" href='https://buymeacoffee.com/ivanportugal'>Buy Me a Coffee</a></p>
@@ -55,7 +79,6 @@ export default function Home({ data = {} }) {
                 <p><a href='mailto:ivanbportugal@gmail.com'>Email</a> me or <a target='_blank' rel="noreferrer" href='https://buymeacoffee.com/ivanportugal'>Buy Me a Coffee</a> with your request.</p>
               </li>
             </ul>
-
           </div>
         </div>
 
