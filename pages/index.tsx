@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css';
 import { useTheme as useNextTheme } from 'next-themes'
 import { Positioner } from '../components/positioner';
 import { Navbar, Switch, Text, User, useTheme } from '@nextui-org/react';
+import { Avatar } from '../components/avatar';
 
 export default function Home({ data = {} }) {
 
@@ -24,12 +25,7 @@ export default function Home({ data = {} }) {
             checked={isDark}
             onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
           />
-          <User
-            // src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-            name="You"
-            // color="primary"
-            bordered
-          />
+          <Avatar></Avatar>
         </Navbar.Content>
       </Navbar>
       <main className={styles.main}>
