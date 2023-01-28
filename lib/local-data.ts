@@ -1,5 +1,6 @@
 import localForage from 'localforage'
 import dayjs from 'dayjs'
+import { AvatarPosition } from '../components/avatar';
 
 const NAME_KEY = 'NAME'
 const AVATAR_KEY = 'AVATAR'
@@ -75,7 +76,7 @@ const getName = async () => {
 const getAvatar = async () => {
   if (typeof window !== 'undefined') {
     await localForage.ready()
-    return await localForage.getItem<number>(AVATAR_KEY)
+    return await localForage.getItem<AvatarPosition>(AVATAR_KEY)
   }
 }
 
@@ -86,7 +87,7 @@ const setName = async (name: string) => {
   }
 }
 
-const setAvatar = async (value: number) => {
+const setAvatar = async (value: AvatarPosition) => {
   if (typeof window !== 'undefined') {
     await localForage.ready()
     await localForage.setItem(AVATAR_KEY, value)

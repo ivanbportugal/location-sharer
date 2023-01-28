@@ -3,7 +3,7 @@ import bg from '../public/avatarians.jpg'
 import { Navbar } from '@nextui-org/react'
 import { useState } from 'react'
 
-interface AvatarPosition {
+export interface AvatarPosition {
   x: number,
   y: number
 }

@@ -25,7 +25,7 @@ export default function Home({ data = {} }) {
             checked={isDark}
             onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
           />
-          <Avatar></Avatar>
+          <Avatar x={1} y={1} />
         </Navbar.Content>
       </Navbar>
       <main className={styles.main}>
