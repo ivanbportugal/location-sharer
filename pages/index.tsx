@@ -2,8 +2,8 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { useTheme as useNextTheme } from 'next-themes'
 import { Positioner } from '../components/positioner';
-import { Navbar, Switch, Text, User, useTheme } from '@nextui-org/react';
-import { Avatar } from '../components/avatar';
+import { Navbar, Switch, Text, useTheme } from '@nextui-org/react';
+import { Profile } from '../components/profile';
 
 export default function Home({ data = {} }) {
 
@@ -25,7 +25,7 @@ export default function Home({ data = {} }) {
             checked={isDark}
             onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
           />
-          <Avatar x={1} y={1} />
+          <Profile />
         </Navbar.Content>
       </Navbar>
       <main className={styles.main}>
@@ -38,9 +38,7 @@ export default function Home({ data = {} }) {
           weight="bold"
         >
           Fry Me?! No, FIND me.
-        </Text>
-
-        
+        </Text>        
 
         <div className={styles.description}>
           <div className={styles.card}>
