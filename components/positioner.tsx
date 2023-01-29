@@ -8,6 +8,7 @@ const Positioner = () => {
   const [errorData, setErrorData] = useState('')
   const [history, setHistory] = useState<GeolocationPosition[]>([])
   const [shareErrorData, setShareErrorData] = useState('')
+  const [currentPosition, setCurrentPosition] = useState<GeolocationPosition>()
 
   const [trackerId, setTrackerId] = useState(0)
 
@@ -23,6 +24,7 @@ const Positioner = () => {
     console.log('Tracking Marker')
     setErrorData('')
     addLocation(rawPosition)
+    setCurrentPosition(rawPosition)
     await setPosData(JSON.stringify(rawPosition.coords))
     getAllLocations().then(all => setHistory(all as any))
   }
