@@ -1,6 +1,6 @@
 import styles from './avatar.module.css'
 import bg from '../public/avatarians.jpg'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export interface AvatarPosition {
   x: number,
@@ -25,7 +25,11 @@ const Avatar = (position: AvatarPosition = {x: 1, y: 1}) => {
     })
   }
 
-  calculatePixels()
+  useEffect(() => {
+    if (position) {
+      calculatePixels()
+    }
+  }, [position])
 
   const custom = <span
     className={styles.avatar}

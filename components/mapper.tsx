@@ -4,24 +4,36 @@ import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet"
 
 const Mapper = ({updatePosition}) => {
 
-  const mapInstance = useMap()
-  const [position, setPosition] = useState(null)
-
-  useEffect(() => {
-    if (updatePosition) {
-      setPosition(updatePosition)
-      mapInstance.locate()
-      mapInstance.flyTo(position, mapInstance.getZoom())
-    }
-  }, [updatePosition]);
-
+  // const [position, setPosition] = useState(null)
+  
+  // useEffect(() => {
+  //   if (updatePosition) {
+  //     setPosition(updatePosition)
+  //     mapInstance.locate()
+  //     mapInstance.flyTo(position, mapInstance.getZoom())
+  //   }
+  // }, [updatePosition]);
+  
   // const updatePosition = (newPosition: GeolocationPosition) => {
-  //   setPosition(newPosition)
-  //   mapInstance.locate()
-  //   mapInstance.flyTo(position, mapInstance.getZoom())
-  // }
+    //   setPosition(newPosition)
+    //   mapInstance.locate()
+    //   mapInstance.flyTo(position, mapInstance.getZoom())
+    // }
+    
+  const LocationMarker = ({thePosition}) => {
+    const mapInstance = useMap()
 
-  const LocationMarker = () => {
+    if (!thePosition) {
+      return null
+    }
+
+    const coords = {
+      lat: thePosition.coords.latitude,
+      lng: thePosition.coords.longitude
+    }
+
+    mapInstance.locate()
+    mapInstance.flyTo(coords, mapInstance.getZoom())
     // const [position, setPosition] = useState(null)
     // const map = useMapEvents({
     //   click() {
@@ -33,8 +45,8 @@ const Mapper = ({updatePosition}) => {
     //   },
     // })
   
-    return position === null ? null : (
-      <Marker position={position}>
+    return (
+      <Marker position={coords}>
         <Popup>You are here</Popup>
       </Marker>
     )
@@ -50,7 +62,7 @@ const Mapper = ({updatePosition}) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <LocationMarker />
+      <LocationMarker thePosition={updatePosition} />
     </MapContainer>
   )
 }
