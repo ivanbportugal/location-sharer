@@ -8,6 +8,11 @@ export interface AvatarPosition {
 }
 
 const Avatar = (position: AvatarPosition = {x: 1, y: 1}) => {
+  
+  const [thePosition, setThePosition] = useState<any>({
+    x: '-1px',
+    y: '-1px'
+  })
 
   // X: -6px. -> -38px -> -73 -> 109 ~= 35px apart. 25 columns
   // Y: -9px -> -45px -> -79 -> -115. ~= 35px apart. 4 rows.
@@ -20,8 +25,7 @@ const Avatar = (position: AvatarPosition = {x: 1, y: 1}) => {
     })
   }
 
-  const [thePosition, setThePosition] = useState<any>(calculatePixels())
-
+  calculatePixels()
 
   const custom = <span
     className={styles.avatar}

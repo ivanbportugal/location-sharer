@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from "react"
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet"
 
@@ -54,4 +55,4 @@ const Mapper = ({updatePosition}) => {
   )
 }
 
-export { Mapper }
+export default Mapper

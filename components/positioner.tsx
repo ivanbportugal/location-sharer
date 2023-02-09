@@ -1,7 +1,11 @@
 import { Button } from "@nextui-org/react"
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react"
 import { addLocation, clear, getAllLocations } from "../lib/local-data"
-import { Mapper } from "./mapper"
+
+const MapWithNoSSR = dynamic(() => import('./mapper'), {
+  ssr: false,
+})
 
 const Positioner = () => {
 
@@ -108,7 +112,9 @@ const Positioner = () => {
       {history.map(item => {
         return <p key={item.timestamp}>{JSON.stringify(item.coords)}</p>
       })}
-      <Mapper updatePosition={currentPosition} />
+      
+      <MapWithNoSSR updatePosition={currentPosition} />
+      
     </div>
     <div>
       <Button onClick={clearAll}>Clear</Button>
