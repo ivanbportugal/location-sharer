@@ -1,6 +1,8 @@
 'use client'
-import { useEffect, useState } from "react"
+import { RefObject, useEffect, useState } from "react"
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet"
+import 'leaflet/dist/leaflet.css'
+import { Map } from "leaflet"
 
 const Mapper = ({updatePosition}) => {
 
@@ -52,18 +54,31 @@ const Mapper = ({updatePosition}) => {
     )
   }
 
+  // const resizeMap = () => {
+  //   const map = useMap()
+  //   map.
+    
+  //   // const container = document.getElementById('map-container')
+  //   if (container) {
+  //     resizeObserver.observe(container)
+  //   }
+  // }
+
   return (
-    <MapContainer
-      center={[51.505, -0.09]}
-      zoom={13}
-      scrollWheelZoom={false}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <LocationMarker thePosition={updatePosition} />
-    </MapContainer>
+    <div style={{height: '500px'}}>
+      <MapContainer
+        center={[51.505, -0.09]}
+        zoom={13}
+        scrollWheelZoom={false}
+        // whenReady={() => resizeMap()}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <LocationMarker thePosition={updatePosition} />
+      </MapContainer>
+    </div>
   )
 }
 
