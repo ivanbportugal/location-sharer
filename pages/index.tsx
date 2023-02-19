@@ -1,9 +1,15 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { useTheme as useNextTheme } from 'next-themes'
-import { Positioner } from '../components/positioner';
 import { Navbar, Switch, Text, useTheme } from '@nextui-org/react';
 import { Profile } from '../components/profile';
+import dynamic from 'next/dynamic';
+import { SSRProvider } from "@react-aria/ssr";
+
+const Positioner = dynamic(() => import('../components/positioner'), {
+  ssr: false,
+})
+
 
 export default function Home({ data = {} }) {
 
@@ -11,6 +17,7 @@ export default function Home({ data = {} }) {
   const { isDark } = useTheme();
 
   return (
+    <SSRProvider>
     <div className={styles.container}>
       <Head>
         <title>Find Me!</title>
@@ -85,5 +92,6 @@ export default function Home({ data = {} }) {
           <span className={styles.stylelinks}>Powered by <a target='_blank' rel="noreferrer" href='https://buymeacoffee.com/ivanportugal'>coffee</a>.</span>
       </footer>
     </div>
+    </SSRProvider>
   )
 }

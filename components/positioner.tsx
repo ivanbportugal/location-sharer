@@ -124,4 +124,4 @@ const Positioner = () => {
   </>)
 }
 
-export { Positioner }
+export default Positioner
